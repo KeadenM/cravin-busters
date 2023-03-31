@@ -26,23 +26,101 @@
     animation: colorChange 20s infinite;
   }
 
-  Label{
-    color: var(--pink);
-    font-family: 'Orbitron', sans-serif;
-    font-size: xx-large
+  h2 {
+    animation: colorChange 20s infinite;
   }
 
-  .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
+  h3 {
+    background-color: var(--blue);
+    color: var(--red);
+    font-family: 'Orbitron', sans-serif;
   }
+
+  .filter-container {
+    background-color: var(--blue1);
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: 40%; /* Adjust this value to control the width */
+    height: 70%; /* Adjust this value to control the height */
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Orbitron', sans-serif;
+    font-size: xx-large;
+    color: var(--pink);
+    
+  }
+  
+  .cuisine-option {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: xx-large;
+    color: var(--pink);
+    background-color: var(--blue1);
+}
+
+input[type="checkbox"] {
+    margin-left: 0.5rem;
+    color: var(--red);
+}
+
+label {
+    margin-right: 1rem;
+  }
+
+span {
+    background-color: var(--blue1);
+    font-size: 1.5rem;
+  }
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.price-slider {
+    width: 100%; /* Adjust this value to control the width of the price slider */
+  }
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: var(--red);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  background: var(--red);
+  cursor: pointer;
+
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 15px; /* Adjust this value to move the dollar signs below the slider */
+    background-color: var(--blue1);
+    width: 100%;
+  }
+  
+  
   
   .button-container {
     display: flex;
@@ -58,6 +136,7 @@
     font-size: 1.5rem;
     cursor: pointer;
     border: 5px solid currentColor;
+    font-family: 'Orbitron', sans-serif;
   }
   
   #button1 {
@@ -104,3 +183,24 @@
       color: var(--blue1);
     }
   }
+
+  
+.slider-labels .dollar1 {
+  position: absolute;
+  left: 0;
+}
+
+.slider-labels .dollar2 {
+  position: absolute;
+  left: 30%; /* Adjust this value to position the second dollar sign */
+}
+
+.slider-labels .dollar3 {
+  position: absolute;
+  left: 60%; /* Adjust this value to position the third dollar sign */
+}
+
+.slider-labels .dollar4 {
+  position: absolute;
+  left: 85%; /* Adjust this value to position the fourth dollar sign */
+}

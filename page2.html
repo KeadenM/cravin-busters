@@ -12,38 +12,67 @@
 </head>
 <body>
     <header>
-        <h1>What are your cravin'</h1>
+        <h2>Whatcha cravin'?</h2>
     </header>
 
-    <div class="button-container">
-    <!--price category
-        Cuisine type
-        Distance --> 
-        <label>
+    <div class="filter-container">
+        <h3>Cuisine</h3>
+        <label class="cuisine-option">
             Thai
             <input type="checkbox" name="cuisine" value="Thai">
+        </label>
+        <label class="cuisine-option">
             BBQ
             <input type="checkbox" name="cuisine" value="BBQ">
+        </label>
+        <label class="cuisine-option">
             Chinese
-            <input type="checkbox" name="cuisine" value="Chinese">
+            <input type="checkbox" name="cuisine" value="Thai">
+        </label>
+        <label class="cuisine-option">
             American
-            <input type="checkbox" name="cuisine" value="American">
+            <input type="checkbox" name="cuisine" value="Thai">
+        </label>
+        <label class="cuisine-option">
             Italian
-            <input type="checkbox" name="cuisine" value="Italian">
+            <input type="checkbox" name="cuisine" value="Thai">
+        </label>
+        <label class="cuisine-option">
             Indian
-            <input type="checkbox" name="cuisine" value="Indian">
-            Mexican
-            <input type="checkbox" name="cuisine" value="Mexican">
-            Japanese
-            <input type="checkbox" name="cuisine" value="Japanese">
+            <input type="checkbox" name="cuisine" value="Thai">
+        </label>
+        <label class="cuisine-option">
             Greek
-            <input type="checkbox" name="cuisine" value="Greek">
+            <input type="checkbox" name="cuisine" value="Thai">
         </label>
-        <label>
-            <input type="range" min="$" max="$$$$$" value="$$$" class="slider" id="myRange">
-        </label>
+        <br>
+        <h3>Price</h3>
+        
+        <input type="range" min="1" max="4" step="1" value="1" class="slider price-slider" id="mySlider">
+        <div class="slider-labels">
+          <span class="dollar1">$</span>
+          <span class="dollar2">$$</span>
+          <span class="dollar3">$$$</span>
+          <span class="dollar4">$$$$</span>
+        </div>
+        <br>
+        <h3>Distance (miles)</h3>
+        <input type="range" min="1" max="5" step="1" value="1" class="slider distance-slider" id="mySlider">
+        <div class="slider-labels">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+          </div>
+        <div id="restaurant-info">
+            <!-- restaurant info displayed here -->
+        </div>
+    
+    
+    
+    </div>
 
-</div>
 
 
 
