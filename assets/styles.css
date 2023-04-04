@@ -36,15 +36,30 @@
     font-family: 'Orbitron', sans-serif;
   }
 
-  h4 {
-    color: var(--pink);
+  #random h4, #random p {
+    padding: 10px;
+    animation: colorChange 20s infinite;
+    font-size: 1.5rem;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
   }
 
-  p {
-    color: var(--blue1);
+  #random {
+    display: none;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-  } 
+    width: 50%;
+    margin-top: .5rem;
+    margin-left: auto;
+    margin-right: auto;
+    animation: colorChange 20s infinite;
+    border: 5px solid currentColor;
+    font-family: 'Orbitron', sans-serif;
+  }
 
+  
+/* Filter settings */
 
   .filter-container {
     background-color: var(--blue1);
@@ -85,6 +100,106 @@ span {
     background-color: var(--blue1);
     font-size: 1.5rem;
   }
+
+
+  
+  /* Button settings */
+  
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: calc(100vh - 20rem);
+  }
+  
+  button {
+    width: 30%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 5px solid currentColor;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  #button1 {
+    animation: colorChange 20s infinite;
+  }
+  
+  #button2 {
+    animation: colorChange 20s infinite;
+  }
+  
+
+  
+  
+  
+  /* media screen settings */
+  
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 2rem; /* Adjust this value to control the font size of h1 on small screens */
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+  
+    .button-container {
+      flex-direction: column;
+      height: auto; /* Reset height to auto for small screens */
+      margin-top: 6rem; /* Add a margin to separate the buttons from the h1 on small screens */
+    }
+  
+    button {
+      width: 100%;
+      margin-bottom: 6rem; /* Adjust this value to control the space between the buttons on small screens */
+    }
+  }
+  
+  
+  /* Color change settings */
+  
+  @keyframes colorChange {
+    0%, 20% {
+      color: var(--white);
+    }
+    20%, 40% {
+      color: var(--pink);
+    }
+    40%, 60% {
+      color: var(--blue2);
+    }
+    60%, 80% {
+      color: var(--red);
+    }
+    80%, 100% {
+      color: var(--blue1);
+    }
+  }
+
+
+
+
+  /* Slider settings for page2 */
+  
+.slider-labels .dollar1 {
+  position: absolute;
+  left: 0;
+}
+
+.slider-labels .dollar2 {
+  position: absolute;
+  left: 30%; /* Adjust this value to position the second dollar sign */
+}
+
+.slider-labels .dollar3 {
+  position: absolute;
+  left: 60%; /* Adjust this value to position the third dollar sign */
+}
+
+.slider-labels .dollar4 {
+  position: absolute;
+  left: 85%; /* Adjust this value to position the fourth dollar sign */
+}
 
 .slider {
   -webkit-appearance: none;
@@ -129,94 +244,3 @@ span {
     background-color: var(--blue1);
     width: 100%;
   }
-  
-  
-  
-  .button-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: calc(100vh - 4rem);
-  }
-  
-  button {
-    width: 30%;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border: 5px solid currentColor;
-    font-family: 'Orbitron', sans-serif;
-  }
-  
-  #button1 {
-    animation: colorChange 20s infinite;
-  }
-  
-  #button2 {
-    animation: colorChange 20s infinite;
-  }
-  
-  #random {
-    color: var(--pink);
-    background-color: var(--red);
-    justify-content: center;
-  }
-  
-  @media screen and (max-width: 768px) {
-    h1 {
-      font-size: 2rem; /* Adjust this value to control the font size of h1 on small screens */
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-  
-    .button-container {
-      flex-direction: column;
-      height: auto; /* Reset height to auto for small screens */
-      margin-top: 6rem; /* Add a margin to separate the buttons from the h1 on small screens */
-    }
-  
-    button {
-      width: 100%;
-      margin-bottom: 6rem; /* Adjust this value to control the space between the buttons on small screens */
-    }
-  }
-  
-  @keyframes colorChange {
-    0%, 20% {
-      color: var(--white);
-    }
-    20%, 40% {
-      color: var(--pink);
-    }
-    40%, 60% {
-      color: var(--blue2);
-    }
-    60%, 80% {
-      color: var(--red);
-    }
-    80%, 100% {
-      color: var(--blue1);
-    }
-  }
-
-  
-.slider-labels .dollar1 {
-  position: absolute;
-  left: 0;
-}
-
-.slider-labels .dollar2 {
-  position: absolute;
-  left: 30%; /* Adjust this value to position the second dollar sign */
-}
-
-.slider-labels .dollar3 {
-  position: absolute;
-  left: 60%; /* Adjust this value to position the third dollar sign */
-}
-
-.slider-labels .dollar4 {
-  position: absolute;
-  left: 85%; /* Adjust this value to position the fourth dollar sign */
-}

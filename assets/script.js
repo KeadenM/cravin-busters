@@ -35,6 +35,8 @@ function getRandomRestaurant() {
         const randomRestaurant = businesses[randomIndex];
         console.log('Random restaurant:', randomRestaurant);
         displayRestaurantInfo(randomRestaurant);
+
+        randomRest.style.display = "flex";
       } else {
         console.log('No restaurants found.');
       }
