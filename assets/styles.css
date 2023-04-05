@@ -65,8 +65,8 @@
     background-color: var(--blue1);
     padding: 1rem;
     border-radius: 10px;
-    max-width: 40%; /* Adjust this value to control the width */
-    height: 70%; /* Adjust this value to control the height */
+    max-width: 40%; 
+    height: 70%; 
     position: absolute;
     left: 1rem;
     top: 50%;
@@ -74,7 +74,9 @@
     font-family: 'Orbitron', sans-serif;
     font-size: xx-large;
     color: var(--pink);
-    
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
   }
   
   .cuisine-option {
@@ -129,7 +131,19 @@ span {
   #button2 {
     animation: colorChange 20s infinite;
   }
+
+  #button3 {
+    color: var(--red);
+    background-color: var(--blue1);
+    justify-content: center;
+  }
   
+  .picky {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+  }
 
   
   
@@ -138,20 +152,20 @@ span {
   
   @media screen and (max-width: 768px) {
     h1 {
-      font-size: 2rem; /* Adjust this value to control the font size of h1 on small screens */
+      font-size: 2rem; 
       margin-bottom: 1rem;
       text-align: center;
     }
   
     .button-container {
       flex-direction: column;
-      height: auto; /* Reset height to auto for small screens */
-      margin-top: 6rem; /* Add a margin to separate the buttons from the h1 on small screens */
+      height: auto; 
+      margin-top: 6rem; 
     }
   
     button {
       width: 100%;
-      margin-bottom: 6rem; /* Adjust this value to control the space between the buttons on small screens */
+      margin-bottom: 6rem; 
     }
   }
   
@@ -245,7 +259,13 @@ span {
     width: 100%;
   }
 
-  #mapid{
-    width: 100%;
-    height: 100vh;
+  #mapid {
+    width: 50%; /* Adjust this value to change the map width */
+    height: 50vh; /* Adjust this value to change the map height */
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
