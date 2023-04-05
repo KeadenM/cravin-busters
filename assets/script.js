@@ -27,7 +27,7 @@ const options = { method: 'GET', headers: { accept: 'application/json', Authoriz
 }
 
 function getRandomRestaurant() {
-  fetch('https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=UT&sort_by=best_match&limit=20', options)
+  fetch('https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=UT&categories=indian&sort_by=best_match&limit=20', options)
   .then(response => response.json())
   .then(response => {
     const businesses = response.businesses;
