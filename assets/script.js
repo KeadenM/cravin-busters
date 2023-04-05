@@ -55,8 +55,6 @@ letsEat.addEventListener("click", function () {
 
 
 
-
-
   const successCallback = (position) => {
     console.log(position);
   };
@@ -66,3 +64,18 @@ letsEat.addEventListener("click", function () {
   };
   
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+  var map = L.map('mapid');
+     
+  navigator.geolocation.getCurrentPosition(function(position) {
+ map.setView([position.coords.latitude, position.coords.longitude], 13);
+});
+  function onLocationError(error){
+     console.log(error);
+     alert('unable to get your location.');
+  }
+ var osm =  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+ maxZoom: 19,
+ attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
+osm.addTo(map);
