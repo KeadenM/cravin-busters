@@ -1,6 +1,5 @@
-var buttonPicky = document.getElementById("button1");
-var letsEat = document.getElementById("button2");
-var randomRest = document.getElementById("random");
+var randomPicky = document.getElementById("button3");
+var randomRest = document.getElementById("random-page2");
 
 const yelpApiKey = 'hTu_VrReWNeoYJwZ0rtmm3ruFI6tcXH4Jn_LItoXCoJQQA6NK29KBphQ8KDq0LcSfxa1CZzJmHe9ypwEDKibnUG8PWiM2cqZFZ0w94B81O6_YcuUnMMwS6-pLNUsZHYx';
 const bingMapsApiKey = 'AvB9Z6Gyuaz2wVO68rKeSphh-U0t8-T2hO7pmMfAHTRtfZHq04ONv2vMdclytiew';
@@ -58,7 +57,7 @@ function successCallback(position) {
   const longitude = position.coords.longitude;
 
   //Displays user's location on map if function getLocation() is successful.
-  var map = L.map('mapid');
+  var map = L.map('mapid-page2');
   map.setView([latitude, longitude], 13);
 
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -83,10 +82,6 @@ function errorCallback(error) {
   alert('Unable to get your location.');
 }
 
-buttonPicky.addEventListener("click", function () {
-  window.location.href = "page2.html";
-});
-
-letsEat.addEventListener("click", function () {
+randomPicky.addEventListener("click", function () {
   getLocation();
 });
