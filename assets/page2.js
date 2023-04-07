@@ -57,7 +57,7 @@ function successCallback(position) {
   const longitude = position.coords.longitude;
 
   //Displays user's location on map if function getLocation() is successful.
-  var map = L.map('mapid');
+  var map = L.map('mapid-page2');
   map.setView([latitude, longitude], 13);
 
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -82,6 +82,6 @@ function errorCallback(error) {
   alert('Unable to get your location.');
 }
 
-letsEat.addEventListener("click", function () {
+randomPicky.addEventListener("click", function () {
   getLocation();
 });
