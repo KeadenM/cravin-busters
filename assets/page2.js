@@ -1,27 +1,30 @@
 var randomPicky = document.getElementById("button3");
 var randomRest = document.getElementById("random-page2");
 var customicon1 = L.icon({
+  
+//Custom icons for user location/random restaurant location
   iconUrl: 'https://toppng.com/uploads/preview/skyrim-map-icons-clip-library-skyrim-quest-marker-icon-11553438138ukhmthly3x.png',
   iconSize: [32, 32],
   iconAnchor: [16, 32]
-});
-var customicon2 = L.icon({
+  });
+  var customicon2 = L.icon({
   iconUrl: 'https://vectorified.com/image/pacman-vector-26.jpg',
   iconSize: [32, 32],
   iconAnchor: [16, 32],
-})
+  })
 
-const yelpApiKey = 'hTu_VrReWNeoYJwZ0rtmm3ruFI6tcXH4Jn_LItoXCoJQQA6NK29KBphQ8KDq0LcSfxa1CZzJmHe9ypwEDKibnUG8PWiM2cqZFZ0w94B81O6_YcuUnMMwS6-pLNUsZHYx';
-const bingMapsApiKey = 'AvB9Z6Gyuaz2wVO68rKeSphh-U0t8-T2hO7pmMfAHTRtfZHq04ONv2vMdclytiew';
-const options = { method: 'GET', headers: { accept: 'application/json', Authorization: 'Bearer ' + yelpApiKey } };
+//Variables to hold api keys for bing/yelp
+  const yelpApiKey = 'hTu_VrReWNeoYJwZ0rtmm3ruFI6tcXH4Jn_LItoXCoJQQA6NK29KBphQ8KDq0LcSfxa1CZzJmHe9ypwEDKibnUG8PWiM2cqZFZ0w94B81O6_YcuUnMMwS6-pLNUsZHYx';
+  const bingMapsApiKey = 'AvB9Z6Gyuaz2wVO68rKeSphh-U0t8-T2hO7pmMfAHTRtfZHq04ONv2vMdclytiew';
+  const options = { method: 'GET', headers: { accept: 'application/json', Authorization: 'Bearer ' + yelpApiKey } };
 
-function getLocation() {
+  function getLocation() {
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-}
+  }
 
 //Takes users city and state from bing API and generates random restaurant.
 //Applies style to random div.
-function getRandomRestaurant(city, state, map, userMarker) {
+  function getRandomRestaurant(city, state, map, userMarker) {
   fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city},${state}&sort_by=best_match&limit=20`, options)
     .then(response => response.json())
     .then(response => {
@@ -35,6 +38,7 @@ function getRandomRestaurant(city, state, map, userMarker) {
         const restaurantLat = randomRestaurant.coordinates.latitude;
         const restaurantLng = randomRestaurant.coordinates.longitude;
         const restaurantMarker = L.marker([restaurantLat, restaurantLng],{icon: customicon1 }).addTo(map);
+        //Places marker for user and restaurant
         map.fitBounds([
           userMarker.getLatLng(),
           restaurantMarker.getLatLng()
@@ -46,10 +50,10 @@ function getRandomRestaurant(city, state, map, userMarker) {
       }
     })
     .catch(err => console.error(err));
-}
+    }
 
 //Appends random restaurant's name, phone number, and address to page.
-function displayRestaurantInfo(restaurant) {
+  function displayRestaurantInfo(restaurant) {
   const name = restaurant.name;
   const address = restaurant.location.address1;
   const phone = restaurant.display_phone;
@@ -70,12 +74,12 @@ function displayRestaurantInfo(restaurant) {
 }
 
 //Takes users position and gets latitude and longitude.
-function successCallback(position) {
+  function successCallback(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
 
   //Displays user's location on map if function getLocation() is successful.
-  var map = L.map('mapid-page2');
+  var map = L.map('mapid--/page2');
   var userMarker = L.marker([latitude, longitude],{icon: customicon2 }).addTo(map);
   map.setView([latitude, longitude], 13);
 
