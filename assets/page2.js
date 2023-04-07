@@ -85,3 +85,24 @@ function errorCallback(error) {
 randomPicky.addEventListener("click", function () {
   getLocation();
 });
+
+var selectedCuisines = [];
+
+function updateCuisineSelection(event) {
+var cuisine = event.target.value;
+  if (event.target.checked) {
+  selectedCuisines.push(cuisine);
+  } else {
+// Remove the deselected cuisine from the selectedCuisines array by filtering out the matching cuisine type
+  selectedCuisines = selectedCuisines.filter(c => c !== cuisine);
+  }
+  console.log(selectedCuisines);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+  var cuisineCheckboxes = document.querySelectorAll('input[type="checkbox"][name="cuisine"]');
+
+  cuisineCheckboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', updateCuisineSelection);
+  });
+  });
