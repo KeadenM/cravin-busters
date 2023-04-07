@@ -1,6 +1,16 @@
 var buttonPicky = document.getElementById("button1");
 var letsEat = document.getElementById("button2");
 var randomRest = document.getElementById("random");
+var customicon1 = L.icon({
+  iconUrl: 'https://toppng.com/uploads/preview/skyrim-map-icons-clip-library-skyrim-quest-marker-icon-11553438138ukhmthly3x.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32]
+});
+var customicon2 = L.icon({
+  iconUrl: 'https://vectorified.com/image/pacman-vector-26.jpg',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+})
 
 const yelpApiKey = 'hTu_VrReWNeoYJwZ0rtmm3ruFI6tcXH4Jn_LItoXCoJQQA6NK29KBphQ8KDq0LcSfxa1CZzJmHe9ypwEDKibnUG8PWiM2cqZFZ0w94B81O6_YcuUnMMwS6-pLNUsZHYx';
 const bingMapsApiKey = 'AvB9Z6Gyuaz2wVO68rKeSphh-U0t8-T2hO7pmMfAHTRtfZHq04ONv2vMdclytiew';
@@ -23,7 +33,7 @@ function getRandomRestaurant(city, state, map, userMarker) {
 
         const restaurantLat = randomRestaurant.coordinates.latitude;
         const restaurantLng = randomRestaurant.coordinates.longitude;
-        const restaurantMarker = L.marker([restaurantLat, restaurantLng]).addTo(map);
+        const restaurantMarker = L.marker([restaurantLat, restaurantLng], {icon: customicon1 }).addTo(map);
         map.fitBounds([
           userMarker.getLatLng(),
           restaurantMarker.getLatLng()
@@ -62,7 +72,7 @@ function successCallback(position) {
   const longitude = position.coords.longitude;
 
   var map = L.map('mapid');
-  var userMarker = L.marker([latitude, longitude]).addTo(map);
+  var userMarker = L.marker([latitude, longitude], {icon: customicon2 }).addTo(map);
   map.setView([latitude, longitude], 13);
 
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
