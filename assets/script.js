@@ -59,6 +59,7 @@ function successCallback(position) {
 
   //Displays user's location on map if function getLocation() is successful.
   var map = L.map('mapid');
+  var marker = L.marker([latitude, longitude]).addTo(map);
   map.setView([latitude, longitude], 13);
 
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
