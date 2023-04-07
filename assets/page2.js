@@ -11,7 +11,7 @@ function getLocation() {
 
 //Takes users city and state from bing API and generates random restaurant.
 //Applies style to random div.
-function getRandomRestaurant(city, state) {
+function getRandomRestaurant(city, state, map, userMarker) {
   fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city},${state}&sort_by=best_match&limit=20`, options)
     .then(response => response.json())
     .then(response => {
@@ -21,7 +21,15 @@ function getRandomRestaurant(city, state) {
         const randomRestaurant = businesses[randomIndex];
         console.log('Random restaurant:', randomRestaurant);
         displayRestaurantInfo(randomRestaurant);
-        
+
+        const restaurantLat = randomRestaurant.coordinates.latitude;
+        const restaurantLng = randomRestaurant.coordinates.longitude;
+        const restaurantMarker = L.marker([restaurantLat, restaurantLng]).addTo(map);
+        map.fitBounds([
+          userMarker.getLatLng(),
+          restaurantMarker.getLatLng()
+        ]);
+
         randomRest.style.display = "flex";
       } else {
         console.log('No restaurants found.');
@@ -58,6 +66,7 @@ function successCallback(position) {
 
   //Displays user's location on map if function getLocation() is successful.
   var map = L.map('mapid-page2');
+  var userMarker = L.marker([latitude, longitude]).addTo(map);
   map.setView([latitude, longitude], 13);
 
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -67,12 +76,12 @@ function successCallback(position) {
   osm.addTo(map);
 
  //Takes user's latitude/longtitude to pass to bing api to get city
-  //and state for yelp random restaurant function above.
+//and state for yelp random restaurant function above.
   fetch(`http://dev.virtualearth.net/REST/v1/Locations/${latitude},${longitude}?o=json&key=${bingMapsApiKey}`)
     .then(response => response.json())
     .then(data => {
       const location = data.resourceSets[0].resources[0].address;
-      getRandomRestaurant(location.locality, location.adminDistrict);
+      getRandomRestaurant(location.locality, location.adminDistrict, map, userMarker);
     })
     .catch(error => console.error('Error fetching location:', error));
 }
@@ -86,23 +95,3 @@ randomPicky.addEventListener("click", function () {
   getLocation();
 });
 
-var selectedCuisines = [];
-
-function updateCuisineSelection(event) {
-var cuisine = event.target.value;
-  if (event.target.checked) {
-  selectedCuisines.push(cuisine);
-  } else {
-// Remove the deselected cuisine from the selectedCuisines array by filtering out the matching cuisine type
-  selectedCuisines = selectedCuisines.filter(c => c !== cuisine);
-  }
-  console.log(selectedCuisines);
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-  var cuisineCheckboxes = document.querySelectorAll('input[type="checkbox"][name="cuisine"]');
-
-  cuisineCheckboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', updateCuisineSelection);
-  });
-  });
