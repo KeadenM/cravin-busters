@@ -10,6 +10,8 @@ function getLocation() {
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 }
 
+//Takes users city and state from bing API and generates random restaurant.
+//Applies style to random div.
 function getRandomRestaurant(city, state) {
   fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city},${state}&sort_by=best_match&limit=20`, options)
     .then(response => response.json())
@@ -29,6 +31,7 @@ function getRandomRestaurant(city, state) {
     .catch(err => console.error(err));
 }
 
+//Appends random restaurant's name, phone number, and address to page.
 function displayRestaurantInfo(restaurant) {
   const name = restaurant.name;
   const address = restaurant.location.address1;
@@ -49,11 +52,12 @@ function displayRestaurantInfo(restaurant) {
   randomRest.appendChild(phoneElem);
 }
 
+//Takes users position and gets latitude and longitude.
 function successCallback(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
 
-  // Initialize and display the map with user's location
+  //Displays user's location on map if function getLocation() is successful.
   var map = L.map('mapid');
   map.setView([latitude, longitude], 13);
 
@@ -63,7 +67,8 @@ function successCallback(position) {
   });
   osm.addTo(map);
 
-  // Get user's city and state and fetch nearby restaurants
+ //Takes user's latitude/longtitude to pass to bing api to get city
+  //and state for yelp random restaurant function above.
   fetch(`http://dev.virtualearth.net/REST/v1/Locations/${latitude},${longitude}?o=json&key=${bingMapsApiKey}`)
     .then(response => response.json())
     .then(data => {
