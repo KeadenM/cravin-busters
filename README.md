@@ -11,12 +11,12 @@ It's that time of the day again. You and your significant other are fighting ove
 It's time to put those arguments to rest, save your relationship, and let Cravin' Busters decide!
 
 
---SCREENSHOT
+![Alt text](https://github.com/KeadenM/mrsir-project/blob/main/assets/Images/Screenshot%202023-04-08%20at%208.07.23%20PM.png)
 
 
 Click the "Let's eat!" button, and our algorithm will generate a random restaurant near you. The Geolocation API starts by getting your location (with your permission, of course) and then converts the location to latitude and longitude. The location is then run through Bing's API to get your city and state. Finally, it is fed into Yelp's API to generate a random restaurant.
 
---screen shot
+[Alt text](https://github.com/KeadenM/mrsir-project/blob/main/assets/Images/Screenshot%202023-04-08%20at%208.51.34%20PM.png)
 
 ## Feelin' picky? 
 
