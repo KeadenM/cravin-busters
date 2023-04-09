@@ -18,7 +18,7 @@ Click the "Let's eat!" button, and our algorithm will generate a random restaura
 
 --screen shot
 
-##Feelin' picky? 
+## Feelin' picky? 
 
 Hit the "I'm picky" button to narrow down your searches. You can pick from a list of different cuisine options depending on what you're feeling.
 
@@ -36,7 +36,7 @@ For more information please visit:
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
-##Authors and acknowledgement
+## Authors and acknowledgement
 
 This page would not be possible without the following API's:
 
@@ -54,5 +54,5 @@ Authors:
 [Peyton B](https://https://github.com/iTsPayAsian)
 [Adam R](https://https://github.com/Adam-Riet)
 
-##License
+## License
 [MIT](https://choosealicense.com/licenses/mit/)
