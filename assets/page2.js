@@ -79,7 +79,7 @@ var customicon1 = L.icon({
   const longitude = position.coords.longitude;
 
   //Displays user's location on map if function getLocation() is successful.
-  var map = L.map('mapid--/page2');
+  var map = L.map('mapid-page2');
   var userMarker = L.marker([latitude, longitude],{icon: customicon2 }).addTo(map);
   map.setView([latitude, longitude], 13);
 
