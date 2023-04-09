@@ -41,7 +41,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 This page would not be possible without the following API's:
 
 https://www.yelp.com/developers
+
 https://learn.microsoft.com/en-us/bingmaps/rest-services/
+
 https://leafletjs.com/reference.html
 
 Big thank you to the API's above and for their ease of use. 
