@@ -89,6 +89,7 @@ var customicon1 = L.icon({
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   });
   osm.addTo(map);
+  
 
  //Takes user's latitude/longtitude to pass to bing api to get city
 //and state for yelp random restaurant function above.
@@ -100,6 +101,8 @@ var customicon1 = L.icon({
       getRandomRestaurant(location.locality, location.adminDistrict, map, userMarker, selectedCuisines);
     })
     .catch(error => console.error('Error fetching location:', error));
+
+    return;
     }
 
   function errorCallback(error) {
@@ -121,12 +124,8 @@ var customicon1 = L.icon({
   } else {
 // Remove the deselected cuisine from the selectedCuisines array by filtering out the matching cuisine type
     selectedCuisines = selectedCuisines.filter(c => c !== cuisine);
-  }
-// Remove duplicate values from selectedCuisines array by creating a Set (which stores unique values) and then converting it back to an array
-  selectedCuisines = [...new Set(selectedCuisines)];
-  console.log(selectedCuisines);
-}
-
+  }};
+  
   document.addEventListener("DOMContentLoaded", () => {
   var cuisineCheckboxes = document.querySelectorAll('input[type="checkbox"][name="cuisine"]');
   //Will run updateCuisine function if any changes are made.
