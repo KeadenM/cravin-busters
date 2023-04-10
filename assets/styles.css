@@ -205,17 +205,17 @@ span {
 
 .slider-labels .dollar2 {
   position: absolute;
-  left: 30%; /* Adjust this value to position the second dollar sign */
+  left: 30%; 
 }
 
 .slider-labels .dollar3 {
   position: absolute;
-  left: 60%; /* Adjust this value to position the third dollar sign */
+  left: 60%; 
 }
 
 .slider-labels .dollar4 {
   position: absolute;
-  left: 85%; /* Adjust this value to position the fourth dollar sign */
+  left: 85%; 
 }
 
 .slider {
