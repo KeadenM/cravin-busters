@@ -36,6 +36,12 @@
     font-family: 'Orbitron', sans-serif;
   }
 
+  h5 { 
+    color: var(--white);
+    background-color: var(--blue1);
+    font-size: .5rem;
+  }
+
   #random h4, #random p {
     padding: 10px;
     animation: colorChange 20s infinite;
