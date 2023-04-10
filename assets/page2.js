@@ -24,8 +24,8 @@ var customicon1 = L.icon({
 
 //Takes users city and state from bing API and generates random restaurant.
 //Applies style to random div.
-  function getRandomRestaurant(city, state, map, userMarker) {
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city},${state}&sort_by=best_match&limit=20`, options)
+  function getRandomRestaurant(city, state, map, userMarker, selectedCuisines) {
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city},${state}&categories=${selectedCuisines.join(',')}&sort_by=best_match&limit=20`, options)
     .then(response => response.json())
     .then(response => {
       const businesses = response.businesses;
@@ -38,7 +38,8 @@ var customicon1 = L.icon({
         const restaurantLat = randomRestaurant.coordinates.latitude;
         const restaurantLng = randomRestaurant.coordinates.longitude;
         const restaurantMarker = L.marker([restaurantLat, restaurantLng],{icon: customicon1 }).addTo(map);
-        //Places marker for user and restaurant
+        
+        //Adjusts the maps so that both user/restaurant marker show without having to zoom out. 
         map.fitBounds([
           userMarker.getLatLng(),
           restaurantMarker.getLatLng()
@@ -95,34 +96,41 @@ var customicon1 = L.icon({
     .then(response => response.json())
     .then(data => {
       const location = data.resourceSets[0].resources[0].address;
-      getRandomRestaurant(location.locality, location.adminDistrict, map, userMarker);
+      //Passing extracted data as arguments to the getRandomRestaurant function 
+      getRandomRestaurant(location.locality, location.adminDistrict, map, userMarker, selectedCuisines);
     })
     .catch(error => console.error('Error fetching location:', error));
-}
+    }
 
-function errorCallback(error) {
+  function errorCallback(error) {
   console.log('Error getting location:', error);
   alert('Unable to get your location.');
-}
+  }
 
-randomPicky.addEventListener("click", function () {
+  randomPicky.addEventListener("click", function () {
   getLocation();
-});
+  });
 
-var selectedCuisines = [];
-function updateCuisineSelection(event) {
-var cuisine = event.target.value;
+//Variable to store cuisine preference.
+  var selectedCuisines = [];
+
+  function updateCuisineSelection(event) {
+  var cuisine = event.target.value;
   if (event.target.checked) {
-  selectedCuisines.push(cuisine);
+    selectedCuisines.push(cuisine);
   } else {
 // Remove the deselected cuisine from the selectedCuisines array by filtering out the matching cuisine type
-  selectedCuisines = selectedCuisines.filter(c => c !== cuisine);
+    selectedCuisines = selectedCuisines.filter(c => c !== cuisine);
   }
+// Remove duplicate values from selectedCuisines array by creating a Set (which stores unique values) and then converting it back to an array
+  selectedCuisines = [...new Set(selectedCuisines)];
   console.log(selectedCuisines);
-  }
+}
+
   document.addEventListener("DOMContentLoaded", () => {
   var cuisineCheckboxes = document.querySelectorAll('input[type="checkbox"][name="cuisine"]');
+  //Will run updateCuisine function if any changes are made.
   cuisineCheckboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', updateCuisineSelection);
+    checkbox.addEventListener('change', updateCuisineSelection);
   });
   });

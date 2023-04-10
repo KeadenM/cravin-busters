@@ -39,7 +39,8 @@ var randomRest = document.getElementById("random");
         const restaurantLat = randomRestaurant.coordinates.latitude;
         const restaurantLng = randomRestaurant.coordinates.longitude;
         const restaurantMarker = L.marker([restaurantLat, restaurantLng], {icon: customicon1 }).addTo(map);
-        //Places marker for user and restaurant
+        
+        //Adjusts the maps so that both user/restaurant marker show without having to zoom out. 
         map.fitBounds([
           userMarker.getLatLng(),
           restaurantMarker.getLatLng()
@@ -95,6 +96,7 @@ var randomRest = document.getElementById("random");
     .then(response => response.json())
     .then(data => {
       const location = data.resourceSets[0].resources[0].address;
+      //Passing extracted data as arguments to the getRandomRestaurant function 
       getRandomRestaurant(location.locality, location.adminDistrict, map, userMarker);
     })
     .catch(error => console.error('Error fetching location:', error));
